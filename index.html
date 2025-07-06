@@ -4,12 +4,15 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Charity Water</title>
+  <!-- Add Proxima Nova font from Adobe Fonts or fallback if not available -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Proxima+Nova:400,600,700&display=swap">
   <style>
     body {
       margin: 0;
-      font-family: Arial, sans-serif;
-      /* Move background image further right */
-      background: url('images/Screen Shot 2025-07-06 at 1.36.46 PM.png') no-repeat 80% center fixed;
+      /* Use Proxima Nova for all text */
+      font-family: 'Proxima Nova', Arial, sans-serif;
+      /* Move background image further right to reveal the woman */
+      background: url('images/Screen Shot 2025-07-06 at 1.36.46 PM.png') no-repeat 85% center fixed;
       background-size: cover;
       color: #333;
     }
@@ -23,29 +26,36 @@
     }
 
     .left-panel {
-      flex: 1;
-      min-width: 350px;
+      flex: 0 0 260px;
+      min-width: 180px;
       background: rgba(255,255,255,0.96);
       border-radius: 18px;
       box-shadow: 0 6px 24px rgba(0,0,0,0.13);
-      padding: 2.5rem 2rem 2rem 2rem;
+      padding: 2.5rem 1.2rem 2rem 1.2rem;
       margin: 2.5vh 0 2.5vh 2vw;
       display: flex;
       flex-direction: column;
       align-items: center;
-      max-width: 370px;
+      max-width: 260px;
       position: relative;
+      /* Add pattern background */
+      overflow: hidden;
     }
 
-    .left-panel::before {
+    .left-panel::after {
       content: "";
-      display: block;
       position: absolute;
-      top: 0; left: 0; right: 0;
-      height: 18px;
-      background: #114B5F;
-      border-top-left-radius: 18px;
-      border-top-right-radius: 18px;
+      inset: 0;
+      z-index: 0;
+      opacity: 0.13;
+      background-image: repeating-linear-gradient(135deg, #114B5F 0px, #114B5F 2px, transparent 2px, transparent 16px);
+      pointer-events: none;
+      border-radius: 18px;
+    }
+
+    .left-panel > * {
+      position: relative;
+      z-index: 1;
     }
 
     .logo-section {
@@ -56,7 +66,6 @@
       margin-top: 0.5rem;
       z-index: 1;
     }
-
     .logo-icon {
       height: 44px;
       width: auto;
@@ -170,33 +179,37 @@
     .right-panel {
       flex: 2;
       position: relative;
-      background-color: rgba(224, 247, 250, 0.0); /* fully transparent */
+      background-color: rgba(224, 247, 250, 0.0);
       display: flex;
       flex-direction: column;
       justify-content: flex-start;
       align-items: flex-end;
-      padding: 2rem 4vw 2rem 2rem; /* more right padding */
+      padding: 2rem 4vw 2rem 2rem;
       min-height: 100vh;
     }
 
     .text-block {
       background: rgba(255,255,255,0.96);
-      padding: 1.2rem 1.5rem;
-      border-radius: 16px;
+      padding: 2rem 2.5rem;
+      border-radius: 18px;
       box-shadow: 0 6px 24px rgba(0,0,0,0.13);
-      max-width: 195px; /* 75% of 260px */
-      min-width: 135px; /* 75% of 180px */
-      margin-top: 2rem;
-      margin-bottom: 2rem;
+      max-width: 340px;
+      min-width: 220px;
+      margin-top: 2.5rem;
+      margin-bottom: 2.5rem;
       margin-right: 1vw;
-      border-left: 6px solid #114B5F;
+      border-left: 8px solid #114B5F;
       text-align: center;
-      font-size: 1rem;
+      font-size: 1.08rem;
       transition: box-shadow 0.2s;
+      aspect-ratio: 2.2/1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
     }
     .text-block h2 {
-      font-size: 1.15rem;
-      margin: 0 0 0.5rem 0;
+      font-size: 1.25rem;
+      margin: 0 0 0.7rem 0;
       color: #114B5F;
       font-weight: 700;
       letter-spacing: 0.01em;
@@ -205,18 +218,9 @@
     .text-block p {
       margin: 0;
       color: #333;
-      font-size: 0.98rem;
-      line-height: 1.5;
+      font-size: 1.05rem;
+      line-height: 1.6;
       text-align: center;
-    }
-
-    .main-image {
-      margin-top: 1rem;
-      width: 100%;
-      max-height: 500px;
-      object-fit: cover;
-      border-radius: 10px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
     }
   </style>
 </head>
@@ -224,8 +228,8 @@
   <div class="container">
     <div class="left-panel">
       <div class="logo-section">
-        <img src="charity_water1.jpeg" alt="Charity Water Logo" class="logo-icon" />
-        <h1>charity: water</h1>
+        <img src="images/CWSupporterLogo_Vertical_BlackText.png" alt="Charity Water Logo" class="logo-icon" />
+        <!-- Removed <h1>charity: water</h1> -->
       </div>
       <h2>Fuel the Future of Sustainable Development</h2>
       <button class="main-btn">Start with Water</button>
@@ -247,7 +251,7 @@
         <h2>Measurable Impact - Fund Clean Water That Saves Lives</h2>
         <p>Every dollar goes directly to sustainable water projects with real-time data, measurable outcomes, and global reach — because 703 million people still live without access to clean, safe water.</p>
       </div>
-      <img src="charity_water1.jpeg" alt="Girl fetching clean water" class="main-image" />
+      <!-- Removed main-image and its alt text -->
     </div>
   </div>
 </body>
