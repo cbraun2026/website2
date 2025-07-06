@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Charity Water</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      /* Move background image further right */
+      background: url('images/Screen Shot 2025-07-06 at 1.36.46 PM.png') no-repeat 80% center fixed;
+      background-size: cover;
+      color: #333;
+    }
+
+    .container {
+      display: flex;
+      flex-wrap: wrap;
+      height: 100vh;
+      /* Remove or reduce backdrop-filter for more visible background */
+      /* backdrop-filter: brightness(95%) saturate(1.1); */
+    }
+
+    .left-panel {
+      flex: 1;
+      min-width: 350px;
+      background: rgba(255,255,255,0.96);
+      border-radius: 18px;
+      box-shadow: 0 6px 24px rgba(0,0,0,0.13);
+      padding: 2.5rem 2rem 2rem 2rem;
+      margin: 2.5vh 0 2.5vh 2vw;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      max-width: 370px;
+      position: relative;
+    }
+
+    .left-panel::before {
+      content: "";
+      display: block;
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 18px;
+      background: #114B5F;
+      border-top-left-radius: 18px;
+      border-top-right-radius: 18px;
+    }
+
+    .logo-section {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 1.2rem;
+      margin-top: 0.5rem;
+      z-index: 1;
+    }
+
+    .logo-icon {
+      height: 44px;
+      width: auto;
+    }
+
+    .main-btn {
+      background-color: #114B5F;
+      color: #fff;
+      border: none;
+      padding: 0.9rem 2rem;
+      font-size: 1.08rem;
+      margin: 1.2rem 0 0.5rem 0;
+      border-radius: 12px;
+      cursor: pointer;
+      font-weight: 600;
+      box-shadow: 0 2px 8px rgba(17,75,95,0.08);
+      transition: background 0.15s;
+    }
+    .main-btn:hover {
+      background-color: #0d3844;
+    }
+
+    .left-panel h2 {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: #222;
+      margin: 0.5rem 0 0 0;
+      text-align: center;
+      letter-spacing: 0.01em;
+    }
+
+    .donate-section {
+      background: rgba(255,255,255,0.92);
+      border-radius: 14px;
+      box-shadow: 0 4px 16px rgba(17,75,95,0.07);
+      padding: 1.5rem 1.2rem 1.2rem 1.2rem;
+      text-align: center;
+      margin-top: 1.5rem;
+      width: 100%;
+      max-width: 320px;
+      z-index: 1;
+      border-top: 5px solid #114B5F;
+    }
+
+    .donate-toggle {
+      background-color: #114B5F;
+      color: white;
+      padding: 0.8rem 2rem;
+      font-weight: bold;
+      border: none;
+      border-radius: 18px;
+      margin-bottom: 1.1rem;
+      cursor: pointer;
+      font-size: 1.02rem;
+      box-shadow: 0 2px 8px rgba(17,75,95,0.08);
+      letter-spacing: 0.01em;
+      transition: background 0.15s;
+    }
+    .donate-toggle:hover {
+      background-color: #0d3844;
+    }
+
+    .donate-options {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.6rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .donate-options button {
+      min-width: 90px;
+      background: #fff;
+      color: #114B5F;
+      border: 2px solid #114B5F;
+      border-radius: 18px;
+      font-weight: bold;
+      font-size: 0.98rem;
+      padding: 0.7rem 0.5rem;
+      cursor: pointer;
+      box-shadow: 0 1px 4px rgba(17,75,95,0.06);
+      transition: background 0.15s, color 0.15s;
+      text-align: center;
+      line-height: 1.2;
+    }
+    .donate-options button:hover {
+      background: #114B5F;
+      color: #fff;
+    }
+
+    .donate-options input {
+      width: 140px;
+      padding: 0.7rem 0.5rem;
+      border: 2px solid #114B5F;
+      border-radius: 18px;
+      font-size: 0.98rem;
+      font-weight: 500;
+      text-align: center;
+      margin-top: 0.2rem;
+      background: #f7fafc;
+      color: #114B5F;
+      box-shadow: 0 1px 4px rgba(17,75,95,0.06);
+      outline: none;
+      transition: border 0.15s;
+    }
+    .donate-options input:focus {
+      border: 2px solid #0d3844;
+      background: #fff;
+    }
+
+    .right-panel {
+      flex: 2;
+      position: relative;
+      background-color: rgba(224, 247, 250, 0.0); /* fully transparent */
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: flex-end;
+      padding: 2rem 4vw 2rem 2rem; /* more right padding */
+      min-height: 100vh;
+    }
+
+    .text-block {
+      background: rgba(255,255,255,0.96);
+      padding: 1.2rem 1.5rem;
+      border-radius: 16px;
+      box-shadow: 0 6px 24px rgba(0,0,0,0.13);
+      max-width: 195px; /* 75% of 260px */
+      min-width: 135px; /* 75% of 180px */
+      margin-top: 2rem;
+      margin-bottom: 2rem;
+      margin-right: 1vw;
+      border-left: 6px solid #114B5F;
+      text-align: center;
+      font-size: 1rem;
+      transition: box-shadow 0.2s;
+    }
+    .text-block h2 {
+      font-size: 1.15rem;
+      margin: 0 0 0.5rem 0;
+      color: #114B5F;
+      font-weight: 700;
+      letter-spacing: 0.01em;
+      text-align: center;
+    }
+    .text-block p {
+      margin: 0;
+      color: #333;
+      font-size: 0.98rem;
+      line-height: 1.5;
+      text-align: center;
+    }
+
+    .main-image {
+      margin-top: 1rem;
+      width: 100%;
+      max-height: 500px;
+      object-fit: cover;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="left-panel">
+      <div class="logo-section">
+        <img src="charity_water1.jpeg" alt="Charity Water Logo" class="logo-icon" />
+        <h1>charity: water</h1>
+      </div>
+      <h2>Fuel the Future of Sustainable Development</h2>
+      <button class="main-btn">Start with Water</button>
+
+      <div class="donate-section">
+        <button class="donate-toggle active">GIVE MONTHLY</button>
+        <div class="donate-options">
+          <button>$10<br>USD/mon</button>
+          <button>$20<br>USD/mon</button>
+          <button>$40<br>USD/mon</button>
+          <button>$100<br>USD/mon</button>
+          <input type="text" placeholder="Choose Amount" />
+        </div>
+      </div>
+    </div>
+
+    <div class="right-panel">
+      <div class="text-block">
+        <h2>Measurable Impact - Fund Clean Water That Saves Lives</h2>
+        <p>Every dollar goes directly to sustainable water projects with real-time data, measurable outcomes, and global reach — because 703 million people still live without access to clean, safe water.</p>
+      </div>
+      <img src="charity_water1.jpeg" alt="Girl fetching clean water" class="main-image" />
+    </div>
+  </div>
+</body>
+</html>
